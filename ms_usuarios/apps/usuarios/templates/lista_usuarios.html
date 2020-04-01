@@ -1,0 +1,12 @@
+<ol>
+   {% for  usuario in usuarios %}
+
+    <li>
+        <ul>
+            <li>{{ usuario.username}}</li>
+            <li>{{ usuario.email}}</li>
+            <li>{{ usuario.rol}}</li>
+        </ul>
+    </li>
+{% endfor %}
+</ol>
