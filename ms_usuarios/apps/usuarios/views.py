@@ -1,7 +1,9 @@
+from django.conf import settings
 from django.http import JsonResponse
 
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
+from django_microservices.utilities import login
 from rest_framework.decorators import api_view
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.parsers import JSONParser
@@ -26,7 +28,7 @@ class ListarCrearUsuarioViewSet(generics.ListCreateAPIView):
     def get_queryset(self):
         queryset = super().get_queryset()
         try:
-            usuario_pk = self.request.META.get('HTTP_MICROSERVICE_USER_PK', 0)
+            usuario_pk = self.request.META.get(settings.DJANGO_HEADER_MICROSERVICE_USER_PK, 0) or self.request.session[settings.MICROSERVICE_USER_PK_SESSION_KEY]
             usuario = get_object_or_404(Usuario, id=usuario_pk)
             if usuario.rol == "Profesor":
                 queryset = queryset.filter(rol="Estudiante")
@@ -46,7 +48,7 @@ class ObtenerModificarUsuarioViewSet(generics.RetrieveUpdateAPIView):
 
     def get(self, request, *args, **kwargs):
         instance = self.get_object()
-        usuario_pk = self.request.META.get('HTTP_MICROSERVICE_USER_PK')
+        usuario_pk = self.request.META.get(settings.DJANGO_HEADER_MICROSERVICE_USER_PK)
         # if usuario_pk is None or usuario_pk == 'None':
         #     raise PermissionDenied({})
 
@@ -57,7 +59,7 @@ class ObtenerModificarUsuarioViewSet(generics.RetrieveUpdateAPIView):
 
     def put(self, request, *args, **kwargs):
         instance = self.get_object()
-        usuario_pk = self.request.META.get('HTTP_MICROSERVICE_USER_PK')
+        usuario_pk = self.request.META.get(settings.DJANGO_HEADER_MICROSERVICE_USER_PK)
         if usuario_pk is None or usuario_pk == 'None':
             raise PermissionDenied({})
 
@@ -74,9 +76,12 @@ class AutenticarUsuario(APIView):
             usuario = Usuario.objects.get(username=request.data.get('username', None))
             if usuario.check_password(request.data.get('password', None)):
                 respuesta['id'] = usuario.pk
+                respuesta[settings.MICROSERVICE_USER_PK_SESSION_KEY] = usuario.pk
+                login(request,respuesta)
             else:
                 status_code = status.HTTP_404_NOT_FOUND
                 respuesta['mensaje'] = "Nombre de usuario o contraseña incorrectos"
+            print(request.session[settings.MICROSERVICE_USER_PK_SESSION_KEY])
         except Usuario.DoesNotExist:
             status_code = status.HTTP_404_NOT_FOUND
             respuesta['mensaje'] = "Nombre de usuario o contraseña incorrectos"
