@@ -9,8 +9,6 @@ before_script:
 - psql -c 'create database ms_usuarios;' -U postgres
 install:
 - pip install -r requirements.txt
-script:
-- python manage.py test apps.usuarios.tests
 deploy:
   provider: heroku
   api_key:
@@ -20,6 +18,7 @@ deploy:
     repo: ivanmviveros/ms_usuarios
   run:
   - python manage.py migrate
-  - python manage.py collectstatic
   - restart
   skip_cleanup: 'true'
+script:
+- python manage.py test apps.usuarios.tests
