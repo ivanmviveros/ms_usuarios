@@ -14,7 +14,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: 919c1798-2398-41f8-9252-f68f75a56373
+    secure: 599d07c3-3311-4041-b85f-7ff33cc9f343
   app: msusuarios
   on:
     repo: ivanmviveros/ms_usuarios
