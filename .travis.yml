@@ -12,7 +12,7 @@ install:
 deploy:
   provider: heroku
   api_key:
-    secure: iBtSwntd38v9cDNRo9bKZpAjjvzIgPXStzzglgaJI/T+kJU0OjyUlmpMovb5MzjXPRSRJqyUHiW8eG8NUOOvT4/hgy7PBqqrCZN76PqZWCz87RdKDVua1B5YhG4QE4MotA8tEB1hkKgMJlSbAnYWYTFMot+pWR5ovKU2mdK6FhNUYSnRL0XKatDWJ8pxMaCGZdSJmMIBb+Vl90TLj9LEk+Bcr7/2MSgcrOayqf0tnb3uE8e58BiiEyfVBhKidmMnQYPyiU90rp821pYmzMhxW7q/xcn1TcuRuKJEJGJHMu4YjTaq+tUKPrbkZSKOMYWfzlmK9XFigThifDHDCxrJMLrr1tXYIC8N0inUTjZa5EhQz9LJtZEpjYG9mjSfP7yTBMsZnWYHDlLgcbAG++O/n9urEa/XXRqX3WCLPJTARNacC2IMtobPal1JFReHq/oGAtOyQAjJM+E+ZTgFUflkgQSEfv7zthYe1qdrOg1mVW7tl0JHZbJG6p93QwVdhlLSP7oH6joa3jitkvxNbToeKrHrDO3wSV7r2xS43Gz4MqqS4ruJu6T77scB2GpxD2mMzpw2usrvV+Ba9YG0Hv6fW9CDdIoMuQ+6/fzy2OvPfq3S0EBhE6zNni8T2Ly1Ry5HGJB6qLoxtPagHWIUGpfZZ6Ge3aVuxW1F+e5VGl4KUog=
+    secure: 26237f7a-5912-4f1f-9a36-425e351cb566
   app: msusuarios
   on:
     repo: ivanmviveros/ms_usuarios
