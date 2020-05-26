@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 # Create your tests here.
-from apps.usuarios.models import Usuario
+from ms_usuarios.apps.usuarios.models import Usuario
 
 
 class UserTestCase(TestCase):
