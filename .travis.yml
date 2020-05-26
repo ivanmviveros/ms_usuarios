@@ -1,15 +1,25 @@
 language: python
 before_install:
-  - sudo apt-get install -y libpq-dev python3-dev
+- sudo apt-get install -y libpq-dev python3-dev
 python:
-  - "3.7"
+- '3.7'
 services:
-  - postgresql
-before_script: # => 6
-  - psql -c 'create database ms_usuarios;' -U postgres
-# command to install dependencies
+- postgresql
+before_script:
+- psql -c 'create database ms_usuarios;' -U postgres
 install:
-  - pip install -r requirements.txt
-# command to run tests
+- pip install -r requirements.txt
 script:
-  - python ms_usuarios/manage.py test apps.usuarios.tests
+- python ms_usuarios/manage.py test apps.usuarios.tests
+deploy:
+  provider: heroku
+  api_key:
+    secure: IReugIVoTdmWi2PXwZkk8RhsTQslleXQN9U+Q0OoZ2wDbjaG4Wvv0rAVEtJpvgcEIp0Kf8b1lysHbT2fbMGjCQzuks0eJ0JDz3KiYUIrwnaxCDOSN9m6+rPXkwYjR1eWyEYWXaQvRpUCqMsMjYN6CjMU+DoDLrn09tJJoUdz7lVAnUFnpocYAOEkifw5yqYnoDDT7fSRFUnIV2V0lI2Kg2TT/tlO1cw6iAh2TKcUTzAxc32kOk41nNysDMsPAsY2uvO+YIJM9mBaXHha8yVvSmuvfEC73JT/rcYD97cDm9CLRcj1LLGtXt4voO/1OFbFHbHqkLp+0fNvRf2wn6xrUpJ2ciB5kYeAcLI/HxXEOUtuQqoOmCBGYuwO7RuFGxSz1wTfy0nNanYGX85HUJU9qFH+YpXK+WN3T9RYMM77Wq1Gn1jDLFyOfio+EXhO6u8S9tMbOS0UmauhmJrZq86ORF4frh+E9c0tNwq+MxFioZuYUJPJrdDI8tT1r99NcxNkkICOb5r/RAvlD7wBqpCOX9mxxKCTfoXAi2CURq7SJDk/h2Lr+cjnaRSNlbWZPeN7GUJHp9G7Jm54c6njuwKh+6SOwAtyc4rJQqLtR3T7ocqQ+OZp5WXqQlazyCAVDuG8uhltWEzTB3u7TpWv2GWWgL+/eIA1gxkBoJ4upqhqVEY=
+  app: ms_usuarios
+  on:
+    repo: ivanmviveros/ms_usuarios
+  run:
+    - "python ms_usuarios/manage.py migrate"
+    - "python ms_usuarios/manage.py collectstatic"
+    - restart
+  skip_cleanup: 'true'
