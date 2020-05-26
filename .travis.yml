@@ -11,4 +11,4 @@ install:
   - pip install -r requirements.txt
 # command to run tests
 script:
-  - python manage.py test apps.usuarios.tests
+  - python ms_usuarios/manage.py test apps.usuarios.tests
