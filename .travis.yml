@@ -14,12 +14,12 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: IReugIVoTdmWi2PXwZkk8RhsTQslleXQN9U+Q0OoZ2wDbjaG4Wvv0rAVEtJpvgcEIp0Kf8b1lysHbT2fbMGjCQzuks0eJ0JDz3KiYUIrwnaxCDOSN9m6+rPXkwYjR1eWyEYWXaQvRpUCqMsMjYN6CjMU+DoDLrn09tJJoUdz7lVAnUFnpocYAOEkifw5yqYnoDDT7fSRFUnIV2V0lI2Kg2TT/tlO1cw6iAh2TKcUTzAxc32kOk41nNysDMsPAsY2uvO+YIJM9mBaXHha8yVvSmuvfEC73JT/rcYD97cDm9CLRcj1LLGtXt4voO/1OFbFHbHqkLp+0fNvRf2wn6xrUpJ2ciB5kYeAcLI/HxXEOUtuQqoOmCBGYuwO7RuFGxSz1wTfy0nNanYGX85HUJU9qFH+YpXK+WN3T9RYMM77Wq1Gn1jDLFyOfio+EXhO6u8S9tMbOS0UmauhmJrZq86ORF4frh+E9c0tNwq+MxFioZuYUJPJrdDI8tT1r99NcxNkkICOb5r/RAvlD7wBqpCOX9mxxKCTfoXAi2CURq7SJDk/h2Lr+cjnaRSNlbWZPeN7GUJHp9G7Jm54c6njuwKh+6SOwAtyc4rJQqLtR3T7ocqQ+OZp5WXqQlazyCAVDuG8uhltWEzTB3u7TpWv2GWWgL+/eIA1gxkBoJ4upqhqVEY=
+    secure: FcoavRcXD9oSX++RNuE5Pamga4lsZrf8hksYZswn0LQQkQz3URdGDWRIzECerF8Us+Q1xfJKX+TyhOoJT6LEvhVQZPHVQRfMdvS+0Q7ggaaUDxPbJTDcEN9+h3c8W90u9J/SKN46ZzwNPmxD0ULjuFGYfmdYGnJcHSd7A/CjaQN/2pt661RIbKL5J/9Nsw96nc9dbalju6zSwF3HlD7CkorctXcMl+u0mWDaqKrguAjVxVec6PFhLTjOB5Mv53OqPwAx7GzCvslQ5r/xkImQrDF8lpXSuMiXBIVobNtzkooGniPzRhPp2zgqsCebDBW5dtUkOmfh9PWXd+isN70hmc9JHH4/ryc0oesYpFah9h6aEtl/d/jPfhA3c/QCZ30lFp97lJ+a8NB+vBpIXHguqBBdsJWCgjljVF3jiE6QCP7FuKpKBnJyUfJoHx9/gNtUD7PoeSD6/oGGAS1KTRfef+4s/czl5smk1poMdec1hh+VX2whW+WqeyFk1Hc0+AA+iY0POfBmF3gMjkUdw9rNsSrqP4JjLxLP70ooNSUXEdcMREaQPjWCQK22mThOYEYIVAK3MsjUFvbi/nWo59/tFdxsdWCPzNKoADBDNp5Hr1l6L1uwtmQm8MV/bi/xotluQipyCcg5rfPkcRTUxS2TRVqLHt3rD7T3a4gMWoXm6wo=
   app: ms_usuarios
   on:
     repo: ivanmviveros/ms_usuarios
   run:
-    - "python ms_usuarios/manage.py migrate"
-    - "python ms_usuarios/manage.py collectstatic"
-    - restart
+  - python ms_usuarios/manage.py migrate
+  - python ms_usuarios/manage.py collectstatic
+  - restart
   skip_cleanup: 'true'
