@@ -10,7 +10,7 @@ before_script:
 install:
 - pip install -r requirements.txt
 script:
-- python ms_usuarios/manage.py test apps.usuarios.tests
+- python manage.py test apps.usuarios.tests
 deploy:
   provider: heroku
   api_key:
@@ -19,7 +19,7 @@ deploy:
   on:
     repo: ivanmviveros/ms_usuarios
   run:
-  - python ms_usuarios/manage.py migrate
-  - python ms_usuarios/manage.py collectstatic
+  - python manage.py migrate
+  - python manage.py collectstatic
   - restart
   skip_cleanup: 'true'
