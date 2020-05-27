@@ -9,13 +9,13 @@ before_script:
 - psql -c 'create database ms_usuarios;' -U postgres
 install:
 - pip install -r requirements.txt
-deploy:
-  provider: heroku
-  api_key:
-    secure: cI9INOWaSAz5Ed8XoKB1yrU/NofwU7lrjsoWsQvZO7jAPJKGK73CdXZYBvaaKqd9ykvC/Vnk5Qi9aTtDNSHe1izpsNmDSrIfVft2GcVCz2y+9oLcRuXtkMHUGX9Ha89uPTUZBAuSix8FuTO6mEpTRxXTOOrolXCzb2BvCP8QK1CO/39BAWwgN+Ek1WOST4p/COTGoUr/GBwEc4Hbp0EEt67D3W9WEFcXPw7v5LjTMU2xFNyC6ZlSBPCaoByVCev7ha7zgG1xX9onPuMRqkcAfOwARfHahjknefX6sXO3RvlgIEknpO3Q2/hWuGRmN/5ip7+Qa3iEsK5GDgh2ryJSYg2XIA+W1b8SA7oMlH2tQHSPI+tNS69zX+KxAuiwW28CWLNcJaD08SpJDDJnAtyBTWz6Lku7b4mYTSbeDqBg1u0CI0l8qHTNK3QzGQ4GPJsHXxcnM1Mph2DvR9MCfNoksjpqhZVHuu0mxdORM7rHwFqcDnpl+iOGTPO070OAgvt7ncGeQOCZPX8hOrhV8Sgh3YfQBrgdPxKe6tA3K8Imb/T5mPz7kIF+CpjpMhfq+dIQ/RUyhcxiVBy/y1WtNyEO8Rc+YLAnsXgmIQC+tNOU7rKD+LeYp/IAcJESn0+2xV7DO0/Kx6KURs3fwlEJu8g86B4776Wp1TpkRH4IkDprWJw=
-  app: msusuarios
-  on:
-    repo: ivanmviveros/ms_usuarios
-  skip_cleanup: 'true'
+#deploy:
+#  provider: heroku
+#  api_key:
+#    secure: cI9INOWaSAz5Ed8XoKB1yrU/NofwU7lrjsoWsQvZO7jAPJKGK73CdXZYBvaaKqd9ykvC/Vnk5Qi9aTtDNSHe1izpsNmDSrIfVft2GcVCz2y+9oLcRuXtkMHUGX9Ha89uPTUZBAuSix8FuTO6mEpTRxXTOOrolXCzb2BvCP8QK1CO/39BAWwgN+Ek1WOST4p/COTGoUr/GBwEc4Hbp0EEt67D3W9WEFcXPw7v5LjTMU2xFNyC6ZlSBPCaoByVCev7ha7zgG1xX9onPuMRqkcAfOwARfHahjknefX6sXO3RvlgIEknpO3Q2/hWuGRmN/5ip7+Qa3iEsK5GDgh2ryJSYg2XIA+W1b8SA7oMlH2tQHSPI+tNS69zX+KxAuiwW28CWLNcJaD08SpJDDJnAtyBTWz6Lku7b4mYTSbeDqBg1u0CI0l8qHTNK3QzGQ4GPJsHXxcnM1Mph2DvR9MCfNoksjpqhZVHuu0mxdORM7rHwFqcDnpl+iOGTPO070OAgvt7ncGeQOCZPX8hOrhV8Sgh3YfQBrgdPxKe6tA3K8Imb/T5mPz7kIF+CpjpMhfq+dIQ/RUyhcxiVBy/y1WtNyEO8Rc+YLAnsXgmIQC+tNOU7rKD+LeYp/IAcJESn0+2xV7DO0/Kx6KURs3fwlEJu8g86B4776Wp1TpkRH4IkDprWJw=
+#  app: msusuarios
+#  on:
+#    repo: ivanmviveros/ms_usuarios
+#  skip_cleanup: 'true'
 script:
 - python manage.py test apps.usuarios.tests
