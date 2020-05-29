@@ -17,4 +17,7 @@ deploy:
   app: msusuarios
   on:
     repo: ivanmviveros/ms_usuarios
+  run:
+    - "python manage.py migrate"
+    - restart
   skip_cleanup: 'true'
