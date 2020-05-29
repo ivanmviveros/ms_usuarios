@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import json
-from django.core.exceptions import ImproperlyConfigured
+from django.coreexceptions import ImproperlyConfigured
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
