@@ -27,15 +27,15 @@ class ListarCrearUsuarioViewSet(generics.ListCreateAPIView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        try:
-            usuario_pk = self.request.META.get(settings.DJANGO_HEADER_MICROSERVICE_USER_PK, 0) or self.request.session[settings.MICROSERVICE_USER_PK_SESSION_KEY]
-            usuario = get_object_or_404(Usuario, id=usuario_pk)
-            if usuario.rol == "Profesor":
-                queryset = queryset.filter(rol="Estudiante")
-            elif usuario.rol != "Administrador":
-                raise PermissionDenied({})
-        except Exception as e:
-            raise PermissionDenied({})
+        # try:
+        #     usuario_pk = self.request.META.get(settings.DJANGO_HEADER_MICROSERVICE_USER_PK, 0) or self.request.session[settings.MICROSERVICE_USER_PK_SESSION_KEY]
+        #     usuario = get_object_or_404(Usuario, id=usuario_pk)
+        #     # if usuario.rol == "Profesor":
+        #     #     queryset = queryset.filter(rol="Estudiante")
+        #     # elif usuario.rol != "Administrador":
+        #     #     raise PermissionDenied({})
+        # except Exception as e:
+        #     raise PermissionDenied({})
 
         return queryset
 

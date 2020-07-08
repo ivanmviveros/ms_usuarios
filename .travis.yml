@@ -1,0 +1,23 @@
+language: python
+before_install:
+- sudo apt-get install -y libpq-dev python3-dev
+python:
+- '3.7'
+services:
+- postgresql
+before_script:
+- psql -c 'create database ms_usuarios;' -U postgres
+install:
+- pip install -r requirements.txt
+script:
+- python manage.py test apps.usuarios.tests
+deploy:
+  provider: heroku
+  api_key: 599d07c3-3311-4041-b85f-7ff33cc9f343
+  app: msusuarios
+  on:
+    repo: ivanmviveros/ms_usuarios
+  run:
+    - "python manage.py migrate"
+    - restart
+  skip_cleanup: 'true'
