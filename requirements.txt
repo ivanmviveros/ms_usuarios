@@ -8,7 +8,7 @@ psycopg2-binary==2.7.5
 pytz==2018.4
 requests==2.20.0
 six==1.11.0
-urllib3==1.24.2
+urllib3==1.26.5
 git+https://ivanmiv@bitbucket.org/ivanmiv/django-microservices.git
 gunicorn==20.0.4
 dj-database-url==0.5.0
